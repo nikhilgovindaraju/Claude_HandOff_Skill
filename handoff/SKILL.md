@@ -1,9 +1,9 @@
 ---
-name: handoff-generator
+name: handoff
 description: Generates a structured handoff document so the user can continue this conversation in a different LLM (ChatGPT, Gemini, Cursor, Codex, or another Claude session) without losing context. ALWAYS use this skill when the user types "/handoff", says "handoff", "hand off", "session handoff", or asks to "continue this elsewhere", "switch to ChatGPT/Gemini/Cursor", "export this chat", "summarize for another LLM", "session is ending", "context limit", or anything similar. Also use when the user mentions running out of messages, hitting a session limit, or wanting to pick up the work later in a different tool. Do not skip this skill for short conversations — use the brief format instead.
 ---
 
-# Handoff Generator
+# Handoff
 
 You are generating a handoff document. The user wants to continue this conversation in a different LLM (or a fresh Claude session) without re-explaining everything.
 

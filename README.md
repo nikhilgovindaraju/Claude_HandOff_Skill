@@ -1,4 +1,4 @@
-# Handoff Generator
+# Handoff Skill
 
 **Continue your AI conversations across different LLMs without losing context.**
 
@@ -16,7 +16,7 @@ You're working with an AI on something real, a codebase, a debugging session, a 
 - Ask the AI for a summary (vague, misses the dead ends, hallucinates details)
 - Copy the entire chat (too long, and the new LLM gets confused by it)
 
-Handoff Generator gives you a fourth option: a **structured, accurate, copy-pasteable handoff** that the next LLM can actually use.
+Handoff gives you a fourth option: a **structured, accurate, copy-pasteable handoff** that the next LLM can actually use.
 
 ---
 
@@ -44,19 +44,19 @@ For short chats, it produces a brief 6-line version instead. The skill picks aut
 
 **Requirements:** Paid plan (Pro, Max, Team, or Enterprise). Code execution must be enabled in **Settings → Capabilities**.
 
-1. Download [`handoff-generator.zip`](./handoff-generator.zip) from this repo.
+1. Download [`handoff.zip`](./handoff.zip) from this repo.
 2. In Claude, open **Customize → Skills**.
 3. Click **"+"** → **"Create skill"** → **"Upload"**.
 4. Upload the zip.
-5. Confirm the toggle next to **handoff-generator** is on.
+5. Confirm the toggle next to **handoff** is on.
 
 To use: type `/handoff` (or say things like "give me a handoff," "I'm switching to ChatGPT," "session is ending"). The skill will produce the document.
 
 ### ChatGPT (Custom GPT)
 
 1. Go to **Explore GPTs → Create**.
-2. In the **Instructions** field, paste the contents of [`SKILL.md`](./handoff-generator/SKILL.md) — but skip the YAML frontmatter (everything between the `---` markers at the top).
-3. Name it "Handoff Generator." Description: *"Generates a structured handoff so you can continue this conversation in another LLM."*
+2. In the **Instructions** field, paste the contents of [`SKILL.md`](./handoff/SKILL.md) — but skip the YAML frontmatter (everything between the `---` markers at the top).
+3. Name it "Handoff" Description: *"Generates a structured handoff so you can continue this conversation in another LLM."*
 4. Save.
 
 To use: open the GPT and type "handoff" or paste your conversation in and ask for a handoff.
@@ -171,7 +171,7 @@ A few design choices that make this prompt more reliable than "just summarize th
 ## Troubleshooting
 
 **The skill isn't firing when I type `/handoff`.**
-Ask Claude: *"When would you use the handoff-generator skill?"* Claude will quote the description back. If your trigger phrase isn't listed, edit the `description` line in `SKILL.md` and re-upload. The description controls when the skill fires; the body controls what it does.
+Ask Claude: *"When would you use the handoff skill?"* Claude will quote the description back. If your trigger phrase isn't listed, edit the `description` line in `SKILL.md` and re-upload. The description controls when the skill fires; the body controls what it does.
 
 **The handoff is too generic / vague.**
 Reply: *"Section X feels thin. Expand it using only what's in this chat."* The skill usually recovers well on a second pass. If it consistently fails on a section, edit the prompt to make that section's instructions more specific.
@@ -195,11 +195,11 @@ Skills require it. Go to **Settings → Capabilities → Code execution and file
 ## Repo structure
 
 ```
-handoff-generator/
+handoff/
 ├── README.md                      # this file
-├── handoff-generator.zip          # ready-to-upload Claude skill
+├── handoff.zip          # ready-to-upload Claude skill
 ├── HANDOFF_PROMPT.md              # standalone prompt for any LLM
-└── handoff-generator/
+└── handoff/
     └── SKILL.md                   # the skill source
 ```
 
@@ -211,7 +211,7 @@ The prompt will get better as more people use it on real conversations. If you h
 
 1. Open an issue with the failure case (sanitize anything sensitive).
 2. Note which section was wrong and how.
-3. If you have a fix, PR it against `handoff-generator/SKILL.md`.
+3. If you have a fix, PR it against `handoff/SKILL.md`.
 
 The most useful issues describe **what the next LLM did wrong** after reading the handoff. That's the real signal.
 
